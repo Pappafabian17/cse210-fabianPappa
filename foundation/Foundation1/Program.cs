@@ -18,9 +18,16 @@ class Program
         video2.AddComment(new Comment("James","How can i improve?"));
         video2.AddComment(new Comment("Jayen","I like it!"));
         video2.AddComment(new Comment("Samuel","sounds good! is very interesting!"));
+        
+        Video video3 = new Video("How to use Classes in C# part - 3","Emrys",531);
+        video3.AddComment(new Comment("Joaquin","What a final part!"));
+        video3.AddComment(new Comment("James","I have learned how to improve from last video! thanks"));
+        video3.AddComment(new Comment("Mary","this ending is so good , now I know how to use classes propperly"));
+        video3.AddComment(new Comment("Puco","I did not like this video, is a little bit confusing"));
 
         videos.Add(video1);
         videos.Add(video2);
+        videos.Add(video3);
 
         foreach(var video in videos)
         {
