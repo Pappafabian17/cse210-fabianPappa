@@ -5,24 +5,27 @@ public BreathingActivity(): base("Breathing Activity","This activity will help y
 
 }
 public void Run()
-{
-  DisplayStartingMessage();
-  
-  int secondsPassed = 0;
-        while (secondsPassed < _duration)
-        {
-            Console.WriteLine("Breath in");
-            ShowCountDown(3);  
-            secondsPassed += 3;
+    {
+        DisplayStartingMessage();
+        int duration = GetDuration();
+        DateTime startTime = DateTime.Now;
+        DateTime futureTime = startTime.AddSeconds(duration);
+        int interval = 3;
 
-            if (secondsPassed < _duration)
+        while (DateTime.Now < futureTime)
+        {
+            Console.Clear();
+            Console.WriteLine("Breathe in...");
+            ShowCountDown(interval);
+
+            if (DateTime.Now < futureTime)
             {
-                Console.WriteLine("Breath out ");
-                ShowCountDown(3);  
-                secondsPassed += 3;
+                Console.Clear();
+                Console.WriteLine("Breathe out...");
+                ShowCountDown(interval);
             }
         }
-        DisplayEndingMessage();
-}
 
+        DisplayEndingMessage();
+    }
 }

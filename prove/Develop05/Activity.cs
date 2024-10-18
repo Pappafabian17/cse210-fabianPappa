@@ -11,6 +11,11 @@ public class Activity
     
   }
 
+  public int GetDuration()
+  {
+    return _duration;
+  }
+
   public void DisplayStartingMessage()
   {
     Console.WriteLine($"Starting {_name}.");
@@ -29,22 +34,29 @@ public class Activity
   }
 
   public void ShowSpinner(int seconds)
-  {
-    for(int i = 0 ; i < seconds ; i++)
     {
-      Console.Write("/\r");
-            System.Threading.Thread.Sleep(500);
+        DateTime startTime = DateTime.Now;
+        DateTime futureTime = startTime.AddSeconds(seconds);
+        while (DateTime.Now < futureTime)
+        {
+            Console.Write("/\r");
+            Thread.Sleep(500);
             Console.Write("-\r");
-            System.Threading.Thread.Sleep(500);
+            Thread.Sleep(500);
+        }
     }
-  }
   public void ShowCountDown(int seconds)
-  {
-    for(int i = seconds ; i > 0 ; i-- )
     {
-      Console.WriteLine(i);
-      System.Threading.Thread.Sleep(1000);
+        DateTime startTime = DateTime.Now;
+        DateTime futureTime = startTime.AddSeconds(seconds);
+
+        while (DateTime.Now < futureTime)
+        {
+            TimeSpan timeLeft = futureTime - DateTime.Now;
+            Console.WriteLine($"{timeLeft.Seconds} seconds remaining...");
+            Thread.Sleep(1000);
+        }
     }
-  }
+
 
 }
